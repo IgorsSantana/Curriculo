@@ -1,0 +1,79 @@
+/* ==========================================
+   FUNDO COM GRÁFICO DE DADOS
+   ========================================== */
+
+.graphBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  overflow: hidden;
+}
+
+.graphSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300vh; /* Maior que a viewport para acompanhar o scroll */
+  transform: translateZ(0);
+}
+
+/* Linhas de dados */
+.dataLine {
+  filter: drop-shadow(0 0 3px currentColor);
+  will-change: stroke-dashoffset;
+}
+
+/* Pontos de dados */
+.dataPoint {
+  filter: drop-shadow(0 0 5px currentColor);
+  will-change: transform, opacity;
+}
+
+/* Números flutuantes */
+.floatingNumbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floatingNumber {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(0, 212, 255, 0.3);
+  animation: floatNumber 5s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+@keyframes floatNumber {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-30px) scale(1);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .graphBackground {
+    opacity: 0.2;
+  }
+
+  .floatingNumber {
+    font-size: 0.6rem;
+  }
+}
+

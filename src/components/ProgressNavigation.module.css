@@ -1,0 +1,274 @@
+/* ==========================================
+   NAVEGAÇÃO POR PROGRESSO (RODAPÉ)
+   ========================================== */
+
+.navigationContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 39, 0.98) 0%,
+    rgba(10, 14, 39, 0.95) 50%,
+    rgba(10, 14, 39, 0) 100%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  pointer-events: none;
+}
+
+/* Linha de progresso SVG */
+.progressLine {
+  position: absolute;
+  bottom: 30px;
+  left: 5%;
+  width: 90%;
+  height: 10px;
+  pointer-events: none;
+}
+
+.progressFill {
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.8));
+  transition: x2 0.1s linear;
+}
+
+/* Container das bolinhas */
+.sectionsContainer {
+  position: absolute;
+  bottom: 25px;
+  left: 5%;
+  width: 90%;
+  height: 20px;
+  pointer-events: auto;
+}
+
+/* Bolinha de seção */
+.sectionDot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(0, 212, 255, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dotInner {
+  width: 8px;
+  height: 8px;
+  background: #00d4ff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00d4ff;
+}
+
+/* Estado ativo */
+.sectionDot.active .dot {
+  background: rgba(0, 212, 255, 0.3);
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  transform: scale(1.3);
+}
+
+.sectionDot.active .dotInner {
+  opacity: 1;
+}
+
+/* Hover */
+.sectionDot:hover .dot {
+  background: rgba(0, 212, 255, 0.4);
+  border-color: #00d4ff;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.sectionDot:hover .dotInner {
+  opacity: 1;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.sectionDot:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltipArrow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(0, 212, 255, 0.95);
+}
+
+.tooltipContent {
+  background: rgba(0, 212, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tooltipNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #0a0e27;
+  color: #00d4ff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.tooltipContent strong {
+  display: block;
+  color: #0a0e27;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.tooltipContent p {
+  color: rgba(10, 14, 39, 0.8);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+/* Indicador de progresso numérico */
+.progressIndicator {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(0, 212, 255, 0.8);
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  pointer-events: none;
+  letter-spacing: 1px;
+  background: rgba(10, 14, 39, 0.9);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Animação de pulso para seção ativa */
+@keyframes dotPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.9), 0 0 40px rgba(123, 47, 247, 0.5);
+  }
+}
+
+.sectionDot.active .dot {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .navigationContainer {
+    height: 60px;
+    padding: 0 3%;
+  }
+
+  .progressLine {
+    bottom: 20px;
+    left: 3%;
+    width: 94%;
+  }
+
+  .sectionsContainer {
+    bottom: 15px;
+    left: 3%;
+    width: 94%;
+  }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dotInner {
+    width: 6px;
+    height: 6px;
+  }
+
+  .tooltipContent {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .tooltipNumber {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+
+  .tooltipContent strong {
+    font-size: 0.85rem;
+  }
+
+  .tooltipContent p {
+    font-size: 0.7rem;
+  }
+
+  .progressIndicator {
+    bottom: 10px;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+}
+
+/* Esconder em telas muito pequenas */
+@media (max-width: 480px) {
+  .tooltipContent p {
+    display: none;
+  }
+
+  .progressIndicator {
+    bottom: 8px;
+    font-size: 0.65rem;
+    padding: 1px 5px;
+  }
+}
+
