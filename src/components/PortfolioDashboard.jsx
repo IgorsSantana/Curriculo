@@ -1138,7 +1138,7 @@ const PortfolioDashboard = () => {
               <LazyIframe
                 ref={iframe1Ref}
                 className={styles.projectVideo}
-                src="https://app.powerbi.com/reportEmbed?reportId=58efdc58-21ed-4b11-887c-ba6fdd6f9806&autoAuth=true&ctid=da49a844-e2e3-40af-86a6-c3819d704f49&filterPaneEnabled=false&navContentPaneEnabled=false"
+                src="https://app.powerbi.com/view?r=eyJrIjoiNmEzMzZkMTgtMDFkMy00ZjIwLTk0ZTctMGIyNzU3ZGU4ZDU4IiwidCI6IjBjMGQxNTYwLWM0MzQtNDM1Yi05NjViLTM4NmZkZmY4MWNhMSJ9&filterPaneEnabled=false&navContentPaneEnabled=false"
                 title="Dashboard de Análise de Vendas"
               />
               
@@ -1237,7 +1237,7 @@ const PortfolioDashboard = () => {
               <LazyIframe
                 ref={iframe2Ref}
                 className={styles.projectVideo}
-                src="https://app.powerbi.com/reportEmbed?reportId=1b3ec5d4-562e-42ab-a387-bbd4c22215bd&autoAuth=true&ctid=da49a844-e2e3-40af-86a6-c3819d704f49&filterPaneEnabled=false&navContentPaneEnabled=false"
+                src="https://app.powerbi.com/view?r=eyJrIjoiYWNhYTA2YWItMDZiZi00NGM0LTk0ZGEtM2E2N2RiODhlZjhjIiwidCI6IjBjMGQxNTYwLWM0MzQtNDM1Yi05NjViLTM4NmZkZmY4MWNhMSJ9&filterPaneEnabled=false&navContentPaneEnabled=false"
                 title="Dashboard de Checklists Operacionais"
               />
               
@@ -1334,7 +1334,7 @@ const PortfolioDashboard = () => {
               <LazyIframe
                 ref={iframe3Ref}
                 className={styles.projectVideo}
-                src="https://app.powerbi.com/reportEmbed?reportId=8b191d03-92d4-4b22-92b5-5b60fe396279&autoAuth=true&ctid=da49a844-e2e3-40af-86a6-c3819d704f49&filterPaneEnabled=false&navContentPaneEnabled=false"
+                src="https://app.powerbi.com/view?r=eyJrIjoiZDdhMWQ1YzctMTJhMS00OTQ4LTk5OTQtZmNmMDg3MzQ0NTkwIiwidCI6IjBjMGQxNTYwLWM0MzQtNDM1Yi05NjViLTM4NmZkZmY4MWNhMSJ9&filterPaneEnabled=false&navContentPaneEnabled=false"
                 title="Dashboard de Controle de Perdas"
               />
               
